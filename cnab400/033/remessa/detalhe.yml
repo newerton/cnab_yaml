@@ -1,32 +1,38 @@
 # Baseado na documentação do Santander
 
-tipo_registro:
+codigo_registro:
+  # Código do registro = 1
   pos: [1, 1]
   picture: '9(01)'
   default:  '1'
 
 codigo_inscricao:
+  # Tipo de inscrição do cedente: 01 = CPF 02 = CGC
   pos: [2, 3]
   picture: '9(02)'
 
 numero_inscricao:
+  # CGC ou CPF do cedente
   pos: [4, 17]
   picture: '9(14)'
 
 codigo_transmissao:
-  # Código de Transmissão
+  # Código de Transmissão (nota 1)
   pos: [18, 37]
   picture: '9(20)'
 
 uso_empresa:
+  # Número de controle do participante, para controle por parte do cedente
   pos: [38, 62]
   picture: 'X(25)'
 
 nosso_numero:
+  # Nosso número (nota 3)
   pos: [63, 70]
   picture: '9(08)'
 
 data_seg_desconto:
+  # Data do segundo desconto
   pos: [71, 76]
   picture: '9(06)'
 
@@ -36,20 +42,24 @@ branco01:
   default: ''
 
 info_multa:
+  # Informação de multa = 4, senão houver informar zero. Verificar página 16
   pos: [78, 78]
   picture: '9(01)'
   default: 0
 
 pct_multa_atraso:
+  # Percentual multa por atraso %
   pos: [79, 82]
   picture: '9(02)V9(02)'
 
 unidade_valor:
+  # Unidade de valor moeda corrente = 00
   pos: [83, 84]
   picture: '9(02)'
   default: '0'
 
 valor_outra_unidade:
+  # Valor do título em outra unidade (consultar banco)
   pos: [85, 97]
   picture: '9(08)V9(05)'
   default: '0'
@@ -60,122 +70,175 @@ branco02:
   default: ''
 
 data_multa:
+  # Data para cobrança de multa. (Nota 4)
   pos: [102, 107]
   picture: '9(06)'
   date_format: '%d%m%y'
 
 numero_carteira:
+  # Código da carteira
+  # 1 = ELETRÔNICA COM REGISTRO
+  # 3 = CAUCIONADA ELETRÔNICA
+  # 4 = COBRANÇA SEM REGISTRO
+  # 5 = RÁPIDA COM REGISTRO (BLOQUETE EMITIDO PELO CLIENTE)
+  # 6 = CAUCIONADA RAPIDA
+  # 7 = DESCONTADA ELETRÔNICA
   pos: [108, 108]
   picture: '9(01)'
 
 codigo_ocorrencia:
+  # Código da ocorrência:
+  # 01 = ENTRADA DE TÍTULO
+  # 02 = BAIXA DE TÍTULO
+  # 04 = CONCESSÃO DE ABATIMENTO
+  # 05 = CANCELAMENTO ABATIMENTO
+  # 06 = PRORROGAÇÃO DE VENCIMENTO
+  # 07 = ALT. NÚMERO CONT.CEDENTE
+  # 08 = ALTERAÇÃO DO SEU NÚMERO
+  # 09 = PROTESTAR
+  #  18 = SUSTAR PROTESTO
   pos: [109, 110]
   picture: '9(02)'
 
 numero_documento:
+  # Seu número
   pos: [111, 120]
   picture: '9(10)'
 
 vencimento:
+  # Data de vencimento do título
   pos: [121, 126]
   picture: '9(06)'
   date_format: '%d%m%y'
 
 valor_titulo:
+  # Valor do título - moeda corrente
   pos: [127, 139]
   picture: '9(11)V9(02)'
 
 codigo_banco:
-  # Número do Banco cobrador = 353 / 033
+  # Número do Banco cobrador = 033
   pos: [140, 142]
   picture: '9(03)'
   default: '33'
 
 agencia_cobradora:
-  # Código da agência cobradora do Banco Santander informar somente se carteira for igual a 5, caso contrário, informar zeros.
+  # Código da agência cobradora do Banco Santander, opcional informar somente se carteira for igual a 5, caso contrário, informar zeros
   pos: [143, 147]
   picture: '9(05)'
   default: '0'
 
 especie:
+  # Espécie de documento:
+  # 01 = DUPLICATA
+  # 02 = NOTA PROMISSÓRIA
+  # 03 = APÓLICE / NOTA DE SEGURO
+  # 05 = RECIBO
+  # 06 = DUPLICATA DE SERVIÇO
+  # 07 = LETRA DE CAMBIO
   pos: [148, 149]
   picture: '9(02)'
 
 aceite:
+  # Tipo de aceite = N
   pos: [150, 150]
   picture: 'X(01)'
   default: 'N'
 
 data_emissao:
+  # Data da emissão do título
   pos: [151, 156]
   picture: '9(06)'
   date_format: '%d%m%y'
 
 instrucao1:
+  # Primeira instrução cobrança
   pos: [157, 158]
   picture: '9(02)'
 
 instrucao2:
+  # Segunda instrução cobrança
+  # 00 = NÃO HÁ INSTRUÇÕES
+  # 02 = BAIXAR APÓS QUINZE DIAS DO VENCIMENTO
+  # 03 = BAIXAR APÓS 30 DIAS DO VENCIMENTO
+  # 04 = NÃO BAIXAR
+  # 06 = PROTESTAR (VIDE POSIÇÃO392/393)
+  # 07 = NÃO PROTESTAR
+  # 08 = NÃO COBRAR JUROS DE MORA
   pos: [159, 160]
   picture: '9(02)'
 
 juros_um_dia:
+  # Valor de mora a ser cobrado por dia de atraso
   pos: [161, 173]
   picture: '9(11)V9(02)'
 
 desconto_ate:
+  # Data limite para concessão de desconto
   pos: [174, 179]
   picture: '9(06)'
   date_format: '%d%m%y'
 
 valor_desconto:
+  # Valor de desconto a ser concedido
   pos: [180, 192]
   picture: '9(11)V9(02)'
   default: '0'
 
 valor_iof:
+  # Valor do IOF a ser recolhido pelo Banco para nota de seguro
   pos: [193, 205]
   picture: '9(08)V9(05)'
   default: '0'
 
 valor_abatimento:
+  # Valor do abatimento a ser concedido ou valor do segundo desconto. Vide posição 71.
   pos: [206, 218]
   picture: '9(11)V9(02)'
   default: '0'
 
 sacado_codigo_inscricao:
+  # Tipo de inscrição do sacado: 01 = CPF 02 = CGC
   pos: [219, 220]
   picture: '9(02)'
 
 sacado_numero_inscricao:
+  # CGC ou CPF do sacado
   pos: [221, 234]
   picture: '9(14)'
 
 nome:
+  # Nome do sacado
   pos: [235, 274]
   picture: 'X(40)'
 
 logradouro:
+  # Endereço do sacado
   pos: [275, 314]
   picture: 'X(40)'
 
 bairro:
+  # Bairro do sacado
   pos: [315, 326]
   picture: 'X(12)'
 
 cep:
+  # CEP do sacado. Somente numeros
   pos: [327, 334]
   picture: '9(08)'
 
 cidade:
+  # Município do sacado
   pos: [335, 349]
   picture: 'X(15)'
 
 estado:
+  # UF Estado do sacado
   pos: [350, 351]
   picture: 'X(02)'
 
 sacador:
+  # Nome do sacador ou coobrigado
   pos: [352, 381]
   picture: 'X(30)'
 
@@ -185,11 +248,13 @@ branco03:
   default: ''
 
 id_complemento:
+  # Identificador do Complemento (i maiúsculo – vide nota 2)
   pos: [383, 383]
   picture: 'X(01)'
   default: 'I'
 
 complemento_conta:
+  # Complemento (nota 2)
   pos: [384, 385]
   picture: '9(02)'
 
@@ -199,6 +264,7 @@ branco04:
   default: ''
 
 prazo:
+  # Número de dias para protesto. Quando posições 157/158 ou 159/160 for igual a 06
   pos: [392, 393]
   picture: '9(02)'
 
@@ -208,5 +274,6 @@ branco05:
   default: ''
 
 numero_sequencial:
+  # Número seqüencial do registro no arquivo
   pos: [395, 400]
   picture: '9(06)'
