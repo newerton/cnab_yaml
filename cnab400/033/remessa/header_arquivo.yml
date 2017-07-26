@@ -1,21 +1,51 @@
+codigo_registro:
+  # Código do Registro = 0
+  pos: [1, 1]
+  picture: '9(01)'
+  default: '0'
+
+codigo_operacao:
+  # Código da Remessa = 1
+  pos: [2, 2]
+  picture: '9(01)'
+  default:  '1'
+
+literal_transmissao:
+  # Literal de transmissão = REMESSA
+  pos: [3, 9]
+  picture: 'X(07)'
+  default:  'REMESSA'
+
+codigo_servico:
+  # Código do serviço = 01
+  pos: [10, 11]
+  picture: '9(02)'
+  default:  '1'
+
+literal_servico:
+  # Literal de serviço = COBRANÇA
+  pos: [12, 26]
+  picture: 'X(15)'
+  default:  'COBRANÇA'
+
 codigo_transmissao:
-  # Código de Transmissão
+  # Código de Transmissão (nota 1)
   pos: [27, 46]
   picture: '9(20)'
 
 nome_empresa:
-  # Nome do Beneficiário
+  # Nome do cedente
   pos: [47, 76]
   picture: 'X(30)'
 
 codigo_banco:
-  # Código do Banco = 353/033
+  # Código do Banco = 033
   pos: [77, 79]
   picture: '9(03)'
   default:  '033'
 
 nome_banco:
-  # Nome do Banco
+  # Nome do Banco = SANTANDER
   pos: [80, 94]
   picture: 'X(15)'
   default:  'SANTANDER'
@@ -62,12 +92,12 @@ mensagem06:
   default: ''
 
 numero_versao:
-  # Número da versão da remessa opcional, se informada, será controlada pelo sistema
+  # Número da versão da remessa opcional, se informada, será controlada pelo sistema (opcional = 000)
   pos: [392, 394]
   picture: '9(03)'
   default: '0'
 
 numero_sequencial:
-  # Número sequencial do registro no arquivo
+  # Número seqüencial do registro no arquivo = 000001
   pos: [395, 400]
   picture: '9(06)'
